@@ -1,7 +1,8 @@
 const axios = require("axios");
+const API_BASE_URL = "https://crude-operation-using-mongo.onrender.com"; 
 
 exports.homeRoutes = (req, res) => {
-    axios.get("http://localhost:3000/api/users")
+    axios.get(`${API_BASE_URL}/api/users`)
         .then(response => {
             res.render("index", { users: response.data });
         })
@@ -15,7 +16,7 @@ exports.add_user = (req, res) => {
 };
 
 exports.update_user = (req, res) => {
-    axios.get("http://localhost:3000/api/users", { params: { id: req.query.id } })
+    axios.get(`${API_BASE_URL}/api/users`, { params: { id: req.query.id } })
         .then(userdata => {
             res.render("update_user", { user: userdata.data }); // Pass user data
         })
